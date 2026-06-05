@@ -4,7 +4,7 @@ Product Gallery is an AI-enhanced product album and sales-conversion system insp
 
 ## Stack
 
-- Backend: Java 8, Spring Boot 2.7, MyBatis Plus, MySQL 8
+- Backend: Java 8+, Spring Boot 2.7+, MyBatis Plus, MySQL 8+
 - Frontend: Vue 3, Vite, Element Plus, Tailwind CSS
 - Optional services: OSS-compatible object storage, OpenAI-compatible LLM API, exchange-rate API, local knowledge base / RAG pipeline
 
@@ -115,4 +115,3 @@ Optional integrations:
 
 - Replace all placeholder passwords and secret strings before deployment.
 - Keep runtime credentials out of source control.
-- Treat `docs/系统完整使用手册.md` as the sanitized public operations guide, not a private production runbook.

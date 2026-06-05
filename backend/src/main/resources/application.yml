@@ -1,0 +1,62 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: product-gallery-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:product_gallery}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&connectTimeout=10000&socketTimeout=60000
+    username: ${DB_USERNAME:product_gallery}
+    password: ${DB_PASSWORD:change_me}
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 200MB
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    # Disable global SQL timeout to avoid long crawl/import writes being interrupted.
+    # If needed, apply per-query timeout at mapper level instead.
+    default-statement-timeout: 0
+  global-config:
+    db-config:
+      id-type: assign_id
+
+app:
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:change_me}
+    token-expire-hours: ${ADMIN_TOKEN_EXPIRE_HOURS:24}
+  upload:
+    oss:
+      enabled: ${OSS_ENABLED:false}
+      endpoint: ${OSS_ENDPOINT:https://oss-us-west-1.aliyuncs.com}
+      bucket-name: ${OSS_BUCKET_NAME:example-bucket}
+      access-key-id: ${OSS_ACCESS_KEY_ID:replace_me}
+      access-key-secret: ${OSS_ACCESS_KEY_SECRET:replace_me}
+      bucket-domain: ${OSS_BUCKET_DOMAIN:}
+  share:
+    base-url: ${SHARE_BASE_URL:http://localhost:8080}
+  ws-album:
+    endpoint: ${WS_ALBUM_ENDPOINT:https://www.szwego.com/album/personal/all}
+    token-secret: ${WS_ALBUM_TOKEN_SECRET:change_this_ws_album_secret}
+    crawl-thread-pool-size: ${WS_ALBUM_CRAWL_POOL_SIZE:2}
+  llm:
+    key-secret: ${LLM_KEY_SECRET:change_this_llm_secret}
+    request-timeout-ms: ${LLM_REQUEST_TIMEOUT_MS:60000}
+  currency:
+    base-currency: ${CURRENCY_BASE:CNY}
+    source-name: ${CURRENCY_SOURCE_NAME:frankfurter}
+    api-url: ${CURRENCY_API_URL:https://api.frankfurter.dev/v2/rates}
+    timeout-ms: ${CURRENCY_TIMEOUT_MS:10000}
+    refresh-cron: ${CURRENCY_REFRESH_CRON:0 10 3 * * *}
+    zone: ${CURRENCY_REFRESH_ZONE:Asia/Shanghai}
+    supported-currencies: ${CURRENCY_SUPPORTED:USD,EUR,GBP,JPY,CNY}
+
+gallery:
+  analytics:
+    enabled: ${ANALYTICS_ENABLED:true}
+    ip-salt: ${ANALYTICS_IP_SALT:change_this_analytics_salt}

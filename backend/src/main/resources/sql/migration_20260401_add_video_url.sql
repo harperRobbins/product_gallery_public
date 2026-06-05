@@ -1,0 +1,2 @@
+ALTER TABLE product
+    ADD COLUMN IF NOT EXISTS video_url VARCHAR(1024) DEFAULT NULL AFTER cover_image;

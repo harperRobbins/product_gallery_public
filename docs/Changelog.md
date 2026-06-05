@@ -8,7 +8,7 @@
 * Type: Add
 * Change:
 * Added a new "Order Voucher" page to the backend, supporting manual invoice creation.
-* Supported two sources for product details: selecting from system products, or manually entering the product name, image, and order quantity.
+* Supported two sources for product details: selecting from system product, or manually entering the product name, image, and order quantity.
 * Supported customer details, shipping fees, discounts, amount paid, validity period, and internal notes.
 * Added currency conversion for unpaid invoices, calculating the entire invoice based on the current project exchange rate and synchronously updating item details and summary amounts.
 * Added a public voucher page `/voucher/{publicCode}` and a voucher poster API `/api/order-vouchers/poster/{publicCode}`.
